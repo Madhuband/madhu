@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="deaeee29-6b62-462c-a4cc-c084e17f1e3d" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="sampleFlow" doc:id="5f01153a-8926-4db0-84ac-67a10c32e37b" >
+		<http:listener doc:name="Listener" doc:id="83e1189f-80f5-48fa-ad98-cfaecc4d753c" path="/test" config-ref="HTTP_Listener_config"/>
+		<set-payload value="#[payload]" doc:name="Set Payload" doc:id="f69efaeb-f232-4e41-8062-9a6a570cc97f" />
+		<logger level="INFO" doc:name="Logger" doc:id="54dec6c0-c9a2-43f0-892a-9a6a0ddc35ab" message="message has arrived"/>
+	</flow>
+</mule>
